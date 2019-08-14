@@ -2,22 +2,9 @@
   <div id="app">
     <h1>{{ title }}</h1>
     <ul>
-      <li v-for="todo in todos">
-        <label>{{ todo.value }}</label>
-      </li>
-    </ul>
-    <hr>
-    <ul>
       <li v-for="(todo,index) in todos"
-          :id="index">
+          :id="index" v-bind:class="{'checked': todo.done}">
         <label>{{ index + 1 }}.{{ todo.value }}</label>
-      </li>
-    </ul>
-    <hr>
-    <!-- v-for不单单可以循环渲染数组，还可以渲染对象属性，例如：-->
-    <ul>
-      <li v-for="value in object">
-        {{ value }}
       </li>
     </ul>
   </div>
@@ -26,6 +13,7 @@
 <style></style>
 
 <script>
+  import './assets/todos.less'
   export default {
     name: 'app',
     data () {
